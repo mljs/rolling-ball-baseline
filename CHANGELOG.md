@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/mljs/rolling-ball-baseline/compare/v2.0.3...v2.0.4) (2026-04-16)
+
+
+### Bug Fixes
+
+* update is-any-array ([41a5e30](https://github.com/mljs/rolling-ball-baseline/commit/41a5e30ebd3030f09f0c5a70514b8008d0813a25))
+
 ## [2.0.3](https://github.com/mljs/rolling-ball-baseline/compare/v2.0.2...v2.0.3) (2024-03-07)
 
 
