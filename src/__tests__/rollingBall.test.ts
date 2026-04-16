@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { rollingBallBaseline } from '../../testData/baselines';
 import { spectrum } from '../../testData/spectrum';
 import { rollingBall } from '../rollingBall';
