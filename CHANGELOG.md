@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/mljs/rolling-ball-baseline/compare/v2.0.4...v3.0.0) (2026-04-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* package is now ESM-only; consumers using require() must migrate to import, or run Node.js >= 20.19, >= 22.12, or any 24.x or later.
+
+### Features
+
+* migrate package to ESM TypeScript ([90aab56](https://github.com/mljs/rolling-ball-baseline/commit/90aab566e70a60cd760eba83af042380d917f58f))
+
 ## [2.0.4](https://github.com/mljs/rolling-ball-baseline/compare/v2.0.3...v2.0.4) (2026-04-16)
 
 
