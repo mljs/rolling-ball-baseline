@@ -1,24 +1,24 @@
-import { describe, expect, it } from 'vitest';
+import { expect, test } from 'vitest';
 
-import { rollingBallBaseline } from '../../testData/baselines';
-import { spectrum } from '../../testData/spectrum';
-import { rollingBall } from '../rollingBall';
+import { rollingBallBaseline } from '../../testData/baselines.ts';
+import { spectrum } from '../../testData/spectrum.ts';
+import { rollingBall } from '../rollingBall.ts';
 
-describe('test rollingball', () => {
-  it('compare with R', () => {
-    const bl = rollingBall(spectrum, { windowM: 200, windowS: 400 });
-    expect(bl).toHaveLength(spectrum.length);
-    for (let i = 0; i < spectrum.length; i++) {
-      expect(
-        Math.abs(bl[i] - rollingBallBaseline[i]) / rollingBallBaseline[i],
-      ).toBeLessThan(0.2);
-    }
+test('compare with R', () => {
+  const bl = rollingBall(spectrum, { windowM: 200, windowS: 400 });
 
-    const y = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-    const correction = rollingBall(y);
+  expect(bl).toHaveLength(spectrum.length);
 
-    for (let i = 0; i < y.length; i++) {
-      expect(correction[i]).toBeCloseTo(1);
-    }
-  });
+  for (let i = 0; i < spectrum.length; i++) {
+    expect(
+      Math.abs(bl[i] - rollingBallBaseline[i]) / rollingBallBaseline[i],
+    ).toBeLessThan(0.2);
+  }
+
+  const y = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const correction = rollingBall(y);
+
+  for (let i = 0; i < y.length; i++) {
+    expect(correction[i]).toBeCloseTo(1);
+  }
 });

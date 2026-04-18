@@ -1,6 +1,19 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
-import { xMean, xMaxValue, xMinValue } from 'ml-spectra-processing';
+import { xMaxValue, xMean, xMinValue } from 'ml-spectra-processing';
+
+export interface RollingBallOptions {
+  /**
+   * Width of local window for minimization/maximization.
+   * @default `Math.round(spectrum.length * 0.04)` (4% of the spectrum length)
+   */
+  windowM?: number;
+  /**
+   * Width of local window for smoothing.
+   * @default `Math.round(spectrum.length * 0.08)` (8% of the spectrum length)
+   */
+  windowS?: number;
+}
 
 /**
  * Rolling ball baseline correction algorithm.
@@ -18,20 +31,13 @@ import { xMean, xMaxValue, xMinValue } from 'ml-spectra-processing';
  *     https://doi.org/10.1016/0168-583X(95)00908-6.
  * (2) Kristian Hovde Liland, Bjørn-Helge Mevik, Roberto Canteri: baseline.
  *     https://cran.r-project.org/web/packages/baseline/index.html
- * @export
- * @param {Array} spectrum
- * @param {Object} [options={}]
- * @param {Number} [options.windowM] - width of local window for minimization/maximization, defaults to 4% of the spectrum length
- * @param {Number} [options.windowS] - width of local window for smoothing, defaults to 8% of the spectrum length
+ * @param spectrum - Input spectrum.
+ * @param options - Rolling ball options.
+ * @returns The computed baseline.
  */
-
-interface Options {
-  windowM: number;
-  windowS: number;
-}
 export function rollingBall(
   spectrum: NumberArray,
-  options: Partial<Options> = {},
+  options: RollingBallOptions = {},
 ): NumberArray {
   if (!isAnyArray(spectrum)) {
     throw new Error('Spectrum must be an array');

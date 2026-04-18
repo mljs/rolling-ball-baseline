@@ -1,3 +1,1 @@
-import { rollingBall } from './rollingBall';
-
-export { rollingBall };
+export { rollingBall } from './rollingBall.ts';
